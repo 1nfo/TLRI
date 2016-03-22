@@ -3,6 +3,7 @@
 ## To do:
 
 1. Find the intersections. [openstreet]
+2. Not sure if need to split abonormal trajectoire
 
 ## some usages:
 ### clean.py
@@ -14,10 +15,10 @@ Get remove the last two columns, rewrite into a new file cleaned.txt. And also g
 >2. manually create a new directory Trajectories
 
 ### plot.py
-	python plot.py [trajectories start-ID [trajectories number [split-flag] ] ]
+	python plot.py [trajectory start-ID [plot number [split-flag] ] ]
 
 Plot each trajectory under the trajectories folder.
-Default plot first 5 (no args given). Can manually set start trajectories id and continue to plot a number of trajectories, if number is not given, default value is 5. The split-flag will yield the results with split plot. It is necessary to ***plot bus trajectories*** since there are many abnormal points.
+Default plot first 5 (no args given). Can manually set start trajectories id and continue to plot a number of trajectories, if number is not given, default value is 5. The split-flag will yield the results with split plot. It is necessary When to ***plot bus trajectories*** since there are many abnormal points.
 >Need to set:  
 >The trajectories data under "Trajectories" folder.  
 >i.e. run clean.py first

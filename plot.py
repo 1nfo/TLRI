@@ -8,7 +8,7 @@ import sys
 
 TRAJ_DIR = "./trajectories/"
 tids = os.listdir(TRAJ_DIR)
-
+if tids[0]<".": print 'need to: \n\trm .DS_store'
 def plotTraj(df):
     plt.plot(np.array(df[2]),np.array(df[3]),color='b')
 
@@ -50,8 +50,6 @@ def plotT(tid):
     else:
         plotTraj(df)
 
-#change trajectories id range
-#tids is a list of all trajectores
 if len(sys.argv)>3:
     flag=sys.argv[3]
 else: flag=False
@@ -65,6 +63,9 @@ if len(sys.argv)>1:
         plt.title(str(start+i))
         plt.show()
 else:
+    #by default no argv
+    #change trajectories id range
+    #tids is a list of all trajectores
     for i in range(5):
         plotT(tids[i])
         plt.title(str(i))
