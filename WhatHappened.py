@@ -14,20 +14,17 @@ else:
     default=True
     tid = "22241"
 
-
 TRAJ_DIR = "./trajectories/"
-tids = os.listdir(TRAJ_DIR)
 
 def readTraj(tid,threshold):
     path=TRAJ_DIR+tid
-    dfs=[]
     with open(path,"rb") as f:
         data = []
         for i in f:
             tmp = i.strip().split(",")
-            range_conditions = float(tmp[3])>23.1 or float(tmp[3])<22.4
-            if range_conditions:
-                return []
+            #range_conditions = float(tmp[3])>23.1 or float(tmp[3])<22.4
+            #if range_conditions:
+                #return []
             data.append([int(tmp[0]),tmp[1],float(tmp[2]),float(tmp[3])])
     df=DataFrame(data).sort_values(by=1)
     return df
