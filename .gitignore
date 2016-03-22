@@ -1,3 +1,4 @@
-TaxiData.txt
-cleaned.txt
+*Data.txt
+*cleaned.txt
 Trajectories/*
+.ipy*

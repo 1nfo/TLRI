@@ -10,7 +10,7 @@
 
 Get remove the last two columns, rewrite into a new file cleaned.txt. And also generate a directory, where each trajectories will be formed as a single file.  
 >Need to set:  
->1. original dataset [TaxiData.txt](http://www-users.cs.umn.edu/~tianhe/BIGDATA/UrbanCPS/TaxiData/TaxiData)(from http://www-users.cs.umn.edu/~zhang/data.html)   
+>1. original dataset [TaxiData.txt](http://www-users.cs.umn.edu/~tianhe/BIGDATA/UrbanCPS/TaxiData/TaxiData) and [BusData.txt](http://www-users.cs.umn.edu/~tianhe/BIGDATA/UrbanCPS/BusData/BusData) (from http://www-users.cs.umn.edu/~zhang/data.html)   
 >2. manually create a new directory Trajectories
 
 ### plot.py
