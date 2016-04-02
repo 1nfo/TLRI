@@ -6,7 +6,7 @@ import os
 import time
 import sys
 
-TRAJ_DIR = "./trajectories/"
+TRAJ_DIR = "./data/trajectories/"
 tids = os.listdir(TRAJ_DIR)
 if tids[0]<".": print 'need to: \n\trm .DS_store'
 def plotTraj(df):

@@ -14,7 +14,7 @@ else:
     default=True
     tid = "22241"
 
-TRAJ_DIR = "./trajectories/"
+TRAJ_DIR = "./data/trajectories/"
 
 def readTraj(tid,threshold):
     path=TRAJ_DIR+tid
