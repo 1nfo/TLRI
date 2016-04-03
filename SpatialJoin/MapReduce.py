@@ -61,7 +61,7 @@ class MapReduce(object):
             _files_to_write_ = len(self.R_res)
             count=1
         for i in self.R_res:
-            with open("../data/AroundItrsctn/"+i.split(",")[0],"wb") as f:
+            with open(self.output+i.split(",")[0],"wb") as f:
                 f.write(i+"\n")
                 for j in self.R_res[i]:
                     f.write(j+"\n")

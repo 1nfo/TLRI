@@ -1,9 +1,20 @@
 # Project2
 
-## To do:
+## Dir Structure
 
-1. Find the intersections. [openstreet]
-2. Not sure if need to split abonormal trajectoire
+__Root__  
+> ...some scripts  
+>__data__  
+> ... raw data (busdata.txt, taxidata.txt) and clean scripts    
+>>__Trajectories__  (ignored by repo)  
+>> ... Each file is a trajectory  
+>>__JoinResults__  (ignored)  
+>> ... Each file is an intersection join result. 
+>
+>__results__  
+> ... some results  
+>__SpatialJoin__  
+> ... MapReduce join
 
 ## some usages:
 ### clean.py
@@ -33,3 +44,15 @@ Plot Animation of trajectory. taxi-id is optional. By default, it will plot an a
 
 ### results/
 some ipynb results will be saved in this folder. 
+
+##  Spatial Join
+usage:  
+
+	cd SpatialJoin/
+	python SpatialJoin.py
+
+make sure has all data under "data/Trajectoies/"
+
+Plot Join:
+
+	python plotJoinResult.py [ number of plot [threshold]]

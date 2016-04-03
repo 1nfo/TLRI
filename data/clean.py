@@ -37,7 +37,7 @@ def f(path,out,end,isTaxi):
         if not jump2:
             DataFrame(flist).sort_values(by=1).to_csv("Trajectories/"+last,header=False,index=False)
         if not jump1:
-            DataFrame(flist).sort_values(by=1).to_csv(out,header=False,index=False)
+            DataFrame(Wlist).sort_values(by=1).to_csv(out,header=False,index=False)
 
 f(taxiPath,outTaxi,endT,True)
 f(busPath,outBus,endB,False)
