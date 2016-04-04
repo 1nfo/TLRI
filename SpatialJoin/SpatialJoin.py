@@ -1,12 +1,14 @@
-import math, time
+import math, time, sys
 import MapReduce
 from scipy.spatial.distance import euclidean
 from collections import defaultdict
 
-BLOCKSIZE=.001
-BLOCKPREC=int(-math.log10(BLOCKSIZE))
-BLOCKEDGE=.0005
-ITSCTNRNG=.0005
+BLOCKSIZE =.002#have to be 0.5,0.25,0.2,0.1,0.05,0.02,...reciprocal is int
+BLOCKEDGE =.002
+ITSCTNRNG =.002
+limit = None if len(sys.argv)<2 else int(sys.argv[1])
+
+prec_func = lambda x:round(float(x)/BLOCKSIZE)*BLOCKSIZE
 
 class Timer:
     def __enter__(self):
@@ -21,14 +23,14 @@ class Mapper(MapReduce.Mapper):
         s=value.split(",")
         if len(s)==3:
             tmp = map(lambda x:float(x),s[1:])
-            outkeys=[tuple(map(lambda x:round(x,BLOCKPREC),[tmp[0]+ii,tmp[1]+jj]))
+            outkeys=[tuple(map(prec_func,[tmp[0]+ii,tmp[1]+jj]))
                 for ii in [-BLOCKEDGE,0,BLOCKEDGE]
                 for jj in [-BLOCKEDGE,0,BLOCKEDGE]]
             for outkey in set(outkeys):
                 context.setdefault(tuple(outkey),defaultdict(list))
                 context[tuple(outkey)]["I"].append(value)
         elif len(s)==4:
-            outkey = map(lambda x:round(float(x),BLOCKPREC),s[2:])
+            outkey = map(prec_func,s[2:])
             context.setdefault(tuple(outkey),defaultdict(list))
             context[tuple(outkey)]["T"].append(value)
 
@@ -49,5 +51,6 @@ mr=MapReduce.MapReduce(Mapper,Reducer)
 mr.set_input_traj("../data/Trajectories/")
 mr.set_input_itsc("../data/intersections")
 mr.set_output("../data/JoinResults/")
+mr.set_param("traj_limit",limit)# None for all trajectories
 with Timer():
     mr.execute(1)

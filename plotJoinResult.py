@@ -19,7 +19,7 @@ for i in Iids:
         res = []
         for i in f:
             res.append(i.strip().split(","))
-    df = pd.DataFrame(res)
+    df = pd.DataFrame(res[1:])
     if len(df[2])>LEAST:
         df[2], df[3] = df[2].astype(float), df[3].astype(float)
         plt.scatter(df[2],df[3])

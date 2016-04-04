@@ -51,7 +51,7 @@ usage:
 	cd SpatialJoin/
 	python SpatialJoin.py
 
-make sure has all data under "data/Trajectoies/"
+make sure has all data under "data/Trajectoies/" and intersection data from **extract_itrsctn.py**
 
 Plot Join:
 

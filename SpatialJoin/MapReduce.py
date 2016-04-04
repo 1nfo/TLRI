@@ -9,7 +9,10 @@ class MapReduce(object):
         self.R_res=defaultdict(list)
         self.input_t=None
         self.input_i=None
-        self.config={}
+        self.config={"traj_limit":None}
+
+    def set_param(self,name,val):
+        self.config[name]=val
 
     def set_input_traj(self,path):
         self.input_t=path
@@ -26,7 +29,9 @@ class MapReduce(object):
             _file_to_mapping_=len(os.listdir(self.input_t))+1
             count=0
         self.Mapper.setup(self)
-        for path in os.listdir(self.input_t):
+        if not self.config["traj_limit"]: paths = os.listdir(self.input_t)
+        else: paths = os.listdir(self.input_t)[:self.config["traj_limit"]]
+        for path in paths:
             if verbose:
                 print "\r__mapping__ %d/%d ..." % (count,_file_to_mapping_),
                 sys.stdout.flush()
@@ -56,7 +61,7 @@ class MapReduce(object):
             self.Reducer.reduce(key,self.M_res[key],self.R_res)
         self.Reducer.cleanup(self)
         if verbose:
-            print "\r__mapping__ %d/%d ..." % (count,_vals_to_reducing_)
+            print "\r__reducing__ %d/%d ..." % (count,_vals_to_reducing_)
             print "Reducer Done!\n\nWriting to files ..."
             _files_to_write_ = len(self.R_res)
             count=1
