@@ -1,6 +1,4 @@
-*Data.txt
-*cleaned.txt
-*/Trajectories/*
-*?/JoinResults/*
-.ipy*
-*/intersections
+*.txt
+.*
+*data/*/*
+*data/intersections
