@@ -26,7 +26,7 @@ def f(path,out,end,isTaxi):
             if last!=tid:
                 ##jump fisrt iter, when last is none tid is not.
                 if last and not jump2:
-                    DataFrame(flist).sort_values(by=1).to_csv("Trajectories/"+last,header=False,index=False)
+                    DataFrame(flist).sort(by=1).to_csv("Trajectories/"+last,header=False,index=False)
                 if not exists("Trajectories/"+tid):
                     jump2, flist = False, []
                 else: jump2=True
@@ -35,9 +35,9 @@ def f(path,out,end,isTaxi):
             if not jump2: flist.append(towritedown)
             if not jump1: Wlist.append(towritedown)
         if not jump2:
-            DataFrame(flist).sort_values(by=1).to_csv("Trajectories/"+last,header=False,index=False)
+            DataFrame(flist).sort(by=1).to_csv("Trajectories/"+last,header=False,index=False)
         if not jump1:
-            DataFrame(Wlist).sort_values(by=1).to_csv(out,header=False,index=False)
+            DataFrame(Wlist).sort(by=1).to_csv(out,header=False,index=False)
 
 f(taxiPath,outTaxi,endT,True)
 f(busPath,outBus,endB,False)
