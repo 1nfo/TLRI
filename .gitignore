@@ -1,4 +1,6 @@
 *.txt
+*.pyc
 .*
 *data/*/*
+*periods/*
 *data/intersections

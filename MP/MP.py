@@ -52,11 +52,11 @@ class MP():
         with p_exit(quene):
             for q in quene:
                 q.join()
-    def WrapperGenerator(self,executor,joblist,verbose=0,*args,**kargs):
+    def WrapperGenerator(self,executor,joblist,verbose,*args,**kargs):
         def func():
             thread_id=kargs.pop("thread_id")
             for job in joblist:
                 with Timer(verbose=verbose) as t:
                     executor(job,*args,**kargs)
-                    t.msg+="Executed by %d, "%thread_id
+                    t.msg+=("Job: "+str(job)+" executed by %d, "%thread_id)
         return func
